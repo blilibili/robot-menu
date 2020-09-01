@@ -1,16 +1,37 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-const updateNextPersonId = React.lazy(() => import('../../page/normalSetting/page/updateNextPersonId'));
+const UpdateNextPersonId = React.lazy(() => import('../../../page/normalSetting/page/updateNextPersonId'));
+const SetIntervalMsg = React.lazy(() => import('../../../page/setIntervalMsg/index'));
 
-class normalSetting extends React.Component{
+class NormalSetting extends React.Component{
 	render() {
 		return (
 			<>
-				<Route path="/setting" component={updateNextPersonId} />
+				<Route path='/setting' render={
+					props => {
+						return (
+						<Suspense fallback={<div>loading...</div>}>
+							<UpdateNextPersonId />
+						</Suspense>
+						)
+					}
+				}>
+				</Route>
+
+				<Route path='/intervalMsg' render={
+					props => {
+						return (
+						<Suspense fallback={<div>loading...</div>}>
+							<SetIntervalMsg />
+						</Suspense>
+						)
+					}
+				}>
+				</Route>
 			</>
 		)
 	}
 }
 
-export default normalSetting
+export default NormalSetting
