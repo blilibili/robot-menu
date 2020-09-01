@@ -31,6 +31,11 @@ class SetIntervalMsg extends React.Component {
 		console.log('输入框', val)
 	}
 
+	setContentMethods = () => {
+		const params = Object.assign({}, this.state.submitForm)
+
+	}
+
 	render() {
 		const { TextArea } = Input;
 		const layout = {
@@ -38,7 +43,7 @@ class SetIntervalMsg extends React.Component {
 			wrapperCol: { span: 6 },
 		}
 		const config = {
-			rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+			rules: [{ type: 'object', required: true, message: '请选择时间' }],
 		};
 
 		const tailLayout = {
@@ -71,7 +76,7 @@ class SetIntervalMsg extends React.Component {
 					</Form.Item>
 
 					<Form.Item {...tailLayout}>
-						<Button type='primary'>设置</Button>
+						<Button type='primary' onClick={this.setContentMethods}>设置</Button>
 					</Form.Item>
 				</Form>
 			</div>
